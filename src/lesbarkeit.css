@@ -1,0 +1,52 @@
+
+/* ===== V23 Lesbarkeit: eine eingebettete Spiele-Schrift (Montserrat, SIL OFL), größer, klarer Kontrast ===== */
+@font-face{font-family:"KW";src:url(assets/kw.woff) format("woff");font-weight:600 900;font-display:block}
+:root{--mut:#d9e6de;--ts:0 1px 2px rgba(0,0,0,.6)}
+html,body,button,input,select,textarea,.card h1,.card h2,.card h3,.iname,.wh,.wn small,.big,#ovMenu .home h1,.overlay h2,#goTxt,
+body.kw-forest #goTxt,body.kw-forest #hud .chip,#kw5Overlay *{font-family:"KW","Avenir Next",system-ui,sans-serif!important}
+html,body{font-weight:700;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+/* keine dicken Umriss-Schatten mehr – die verschmieren kleine Schrift */
+*{text-shadow:none!important}
+.card h1,.card h2,#ovMenu .home h1,.home-hero p{text-shadow:0 2px 6px rgba(0,0,0,.55)!important}
+/* Obere Leiste */
+#hud .chip,body.kw-forest #hud .chip{font-size:17px!important;font-weight:800!important;color:#fff8e6}
+#hud .chip.gold,body.kw-forest #hud .chip.gold{color:#ffe28a}
+#app .rb{color:#fff8e6!important;font-size:15px!important;font-weight:900!important}
+#app .rb svg{color:#fff8e6}
+/* Startknopf */
+#go,#app #go:not(:disabled),body.kw-forest #go:enabled{font-size:18px!important;font-weight:900!important;color:#1f1a0c!important;letter-spacing:.2px}
+#goTxt small{font-size:15px!important;font-weight:800!important;opacity:1!important;color:inherit}
+#go:disabled #goTxt,#app #go:disabled{color:#fff8e6!important}
+/* Turm-Leiste */
+.tw b,#app .tw b{font-size:13.5px!important;font-weight:800!important;color:#fff8e6}
+.price{font-size:14.5px!important;font-weight:900!important}
+/* Hinweise, Toast, Turm-Info */
+#coach{font-size:15.5px!important;line-height:1.35!important;font-weight:700!important}
+#toast{font-size:15px!important;font-weight:800!important}
+.iname{font-size:19px!important;font-weight:900!important}
+.istats{font-size:13px!important;color:#e8f0ea!important}.istats b{font-size:14px!important}
+.ihint,.itile,.ichoose{font-size:13.5px!important;color:#eef4ee}
+.btn3d{font-size:14.5px!important}.btn3d small,.b-mode small,.b-sell small,.b-up small,.b-br small{font-size:12px!important;opacity:1!important}
+.ibr,.ivet{font-size:12px!important}
+/* Menüs und Fenster */
+.card p{font-size:15.5px!important;line-height:1.45!important;color:#eef4ee!important}
+.big,#ovMenu .home .big,#ovMenu #kw5Open{font-size:17px!important;font-weight:800!important}
+.big small,#ovMenu .home .big small{font-size:13px!important;opacity:.95!important;font-weight:600!important}
+#ovMenu .home-tools .big{font-size:15px!important}
+.li b{font-size:16px!important}.li small,.li .t small{font-size:13.5px!important;color:#dfeae3!important}
+.li.diff b,.li.map b{font-size:17px!important}
+.tipline{font-size:14.5px!important}.res div{font-size:15.5px!important}
+.tabs button{font-size:15px!important}
+.gems,#ovMenu .gems{font-size:16px!important}
+.mut b{font-size:15px!important}.mut small{font-size:12.5px!important}.mut em{font-size:12.5px!important}
+.albc b,.albr b{font-size:14px!important}.albc small,.albr small{font-size:12.5px!important}
+.rcell small{font-size:12.5px!important}.rcell .buy,.buy{font-size:14px!important}
+.wn small{font-size:13px!important;font-weight:800!important;text-shadow:0 1px 3px #000,0 0 6px rgba(0,0,0,.8)!important}
+.demo{font-size:13px!important;opacity:.9!important}
+#achPop b{font-size:16px!important}#achPop small{font-size:13.5px!important}
+.li.relic small{font-size:14px!important}.li.relic .rar{font-size:12px!important}
+/* dunkle Schrift auf hellen/gelben Flächen */
+.overlay .card h2,.overlay:not(#ovMenu) h2{color:#2a1d08!important;text-shadow:none!important}
+.btn3d.b-mode,.btn3d.b-mode small,.btn3d.b-perk:not(:disabled),.btn3d.b-perk:not(:disabled) small{color:#2a1d08!important}
+#achPop b{color:#2a1d08!important}
+@media (max-width:390px){#hud .chip,body.kw-forest #hud .chip{font-size:15.5px!important}.tw b,#app .tw b{font-size:12.5px!important}}

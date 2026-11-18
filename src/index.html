@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#152743">
+<meta name="color-scheme" content="dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kristallwacht">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" href="assets/icon.png">
+<title>Kristallwacht</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="lesbarkeit.css" id="kwRead">
+<link rel="stylesheet" href="comic.css" id="kwComic">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gCoin" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff5b0"/><stop offset=".5" stop-color="#ffc93c"/><stop offset="1" stop-color="#c2800e"/></linearGradient>
+    <linearGradient id="gHeart" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff9aa6"/><stop offset=".6" stop-color="#ff4058"/><stop offset="1" stop-color="#b3132c"/></linearGradient>
+    <linearGradient id="gCry" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8fffb"/><stop offset=".5" stop-color="#5ee0c8"/><stop offset="1" stop-color="#1b8f86"/></linearGradient>
+    <linearGradient id="gTro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff2a8"/><stop offset=".6" stop-color="#ffc93c"/><stop offset="1" stop-color="#b8740a"/></linearGradient>
+    <linearGradient id="gMet" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff0a0"/><stop offset=".5" stop-color="#ffb347"/><stop offset="1" stop-color="#ff5a1f"/></linearGradient>
+    <symbol id="sCoin" viewBox="0 0 20 20"><image href="assets/scoin.webp" x="0" y="0" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></symbol>
+    <symbol id="sHeart" viewBox="0 0 20 20"><image href="assets/sheart.webp" x="0" y="0" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></symbol>
+    <symbol id="sFlag" viewBox="0 0 20 20"><path d="M4 2v17" stroke="#c9b48a" stroke-width="2" stroke-linecap="round"/><path d="M5 3h11l-3 4 3 4H5z" fill="#ff5d6c" stroke="#7a0d1d" stroke-width="1"/></symbol>
+    <symbol id="sGem" viewBox="0 0 20 20"><image href="assets/sgem.webp" x="0" y="0" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></symbol>
+    <symbol id="sStar" viewBox="0 0 20 20"><image href="assets/sstar.webp" x="0" y="0" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></symbol>
+    <symbol id="sPlay" viewBox="0 0 20 20"><path d="M6 3.5v13l11-6.5z" fill="currentColor"/></symbol>
+    <symbol id="sFF" viewBox="0 0 20 20"><path d="M2 4v12l8-6zM10 4v12l8-6z" fill="currentColor"/></symbol>
+    <symbol id="sLock" viewBox="0 0 20 20"><image href="assets/slock.webp" x="0" y="0" width="20" height="20" preserveAspectRatio="xMidYMid meet"/></symbol>
+    <symbol id="sWing" viewBox="0 0 20 20"><path d="M1 12 Q6 3 19 5 Q14 8 15 10 Q10 9 10 12 Q6 10 1 12Z" fill="#a8dcff" stroke="#1d4a70" stroke-width="1"/></symbol>
+    <symbol id="sRel" viewBox="0 0 20 20"><path d="M10 1.2v3.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="10" cy="11.5" r="7" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M10 6.2 L13.6 11.3 L10 16.8 L6.4 11.3Z" fill="currentColor"/><path d="M10 6.2 L10 16.8 L6.4 11.3Z" fill="#fff" opacity=".35"/></symbol>
+    <symbol id="sTro" viewBox="0 0 30 30"><path d="M8 4h14v7a7 7 0 0 1-14 0z" fill="url(#gTro)" stroke="#7a4a00" stroke-width="1.2"/><path d="M8 6H4a4 4 0 0 0 4 6M22 6h4a4 4 0 0 1-4 6" fill="none" stroke="#c98a12" stroke-width="2"/><rect x="13" y="17" width="4" height="5" fill="#c98a12"/><rect x="9" y="22" width="12" height="4" rx="1.5" fill="url(#gTro)" stroke="#7a4a00"/></symbol>
+    <symbol id="sMet" viewBox="0 0 30 30"><path d="M27 3 L13 12 L18 13 L9 20" stroke="#fff3c4" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".85"/><path d="M24 4 L14 16" stroke="#ffd27a" stroke-width="5" stroke-linecap="round" opacity=".6"/><circle cx="11" cy="19" r="7.5" fill="url(#gMet)" stroke="#7a1e0c" stroke-width="1.4"/><circle cx="9" cy="17" r="2" fill="#7a2a10" opacity=".55"/><circle cx="13.5" cy="21.5" r="1.4" fill="#7a2a10" opacity=".55"/></symbol>
+  </defs>
+</svg>
+
+<div id="app">
+  <div id="hud">
+    <div class="chip gold"><svg class="ic"><use href="#sCoin"/></svg><span id="hGold">0</span></div>
+    <div class="chip"><svg class="ic"><use href="#sHeart"/></svg><span id="hLives">0</span></div>
+    <div class="chip"><svg class="ic"><use href="#sFlag"/></svg><span id="hWave">0</span></div>
+    <button class="chip" id="hRel" aria-label="Relikte"><svg class="ic" style="color:#d38cff"><use href="#sRel"/></svg><span id="hRelN">0</span></button>
+    <div class="sp"></div>
+    <button class="rb" id="bSpeed" aria-label="Tempo">1&times;</button>
+    <button class="rb" id="bPause" aria-label="Pause"><svg viewBox="0 0 20 20"><rect x="5" y="4" width="3.6" height="12" rx="1.2" fill="currentColor"/><rect x="11.4" y="4" width="3.6" height="12" rx="1.2" fill="currentColor"/></svg></button>
+  </div>
+  <div id="stage"><div id="frame"><canvas id="cv"></canvas></div><div id="boosts" class="hide"><button class="rb" id="bBoost" aria-label="Booster"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="16" fill="#ffd84a" stroke="#10182b" stroke-width="2.5"/><path d="M22 7L12 22h7l-2 11 11-16h-7z" fill="#fff" stroke="#10182b" stroke-width="2" stroke-linejoin="round"/></svg></button><div id="bRow"><button class="rb bb" data-b="gold" aria-label="Startgold"><span>💰</span><i>0</i></button><button class="rb bb" data-b="ice" aria-label="Eis-Welle"><span>❄️</span><i>0</i></button><button class="rb bb" data-b="bomb" aria-label="Bombe"><span>💣</span><i>0</i></button><button class="rb bb" data-b="life" aria-label="Zusatzleben"><span>❤️</span><i>0</i></button></div></div><div id="toast"></div><div id="info"></div>
+    <div id="coach" class="hide"><img class="coachEmmi" alt="" src="assets/coachemmi.webp"><span class="cstep" id="coachStep"></span><span id="coachTxt"></span><button id="coachX" aria-label="Tutorial überspringen">✕</button></div>
+    <button class="rb" id="bZoom" aria-label="Zoomen"><svg viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M15 15l5.5 5.5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M7 10h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path class="zv" d="M10 7v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <button class="rb" id="bPath" aria-label="Weg anzeigen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="19" r="1.9" fill="currentColor"/><path d="M5 17Q5 11 11 11Q17 11 17 6"/><path d="M13.5 7.5L17 4l3.5 3.5"/></svg></button>
+    <button class="rb" id="bTilt" aria-label="Ansicht"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linejoin="round" stroke-linecap="round">
+      <g class="i3d"><path d="M12 3.2 20.5 8 12 12.8 3.5 8Z"/><path d="M3.5 8v6.2L12 19v-6.2"/><path d="M20.5 8v6.2L12 19"/></g>
+      <g class="igr"><rect x="3.4" y="3.4" width="7.6" height="7.6" rx="1.6"/><rect x="13" y="3.4" width="7.6" height="7.6" rx="1.6"/><rect x="3.4" y="13" width="7.6" height="7.6" rx="1.6"/><rect x="13" y="13" width="7.6" height="7.6" rx="1.6"/></g></svg></button></div>
+  <div id="bar">
+    <div id="shop"></div>
+    <div id="actions">
+      <button id="undo" class="hide" aria-label="Rückgängig"><svg viewBox="0 0 24 24"><path d="M9.5 5.5L4.5 10.5l5 5" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 10.5h9a5.5 5.5 0 0 1 0 11h-3" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></svg></button>
+      <button id="met" aria-label="Meteor"><svg><use href="#sMet"/></svg></button>
+      <button id="go"><span id="goFill"></span><span id="goTxt"></span></button>
+    </div>
+  </div>
+  <div id="loupe"><canvas id="lpc"></canvas></div>
+  <div id="achPop"><svg class="trophy"><use href="#sTro"/></svg><div><b id="achName"></b><small id="achTxt"></small></div></div>
+</div>
+
+<div class="overlay" id="ovMenu">
+  <div class="card home2">
+    <img class="emblem emmiArt" alt="" src="assets/emblem.webp">
+    <h1>Kristallwacht</h1>
+    <p class="hsub">Baue ein Labyrinth. Halte die Schatten auf.</p>
+    <div class="pills">
+      <div class="gems" aria-label="Kristallsplitter"><svg class="ic" aria-hidden="true"><use href="#sGem"/></svg><span class="gemCount">0</span></div>
+      <div class="gems st" aria-label="Sterne"><svg class="ic" aria-hidden="true"><use href="#sStar"/></svg><span class="starCount">0</span></div>
+    </div>
+    <div class="home-play">
+      <button class="big kw-first" id="bPrologue">Emmis erster Einsatz<small>Vorgebautes Labyrinth · 10 Wellen</small></button>
+      <button class="big teal hide" id="bContinue"></button>
+      <button class="big" id="bCampaign"><svg class="ic"><use href="#sPlay"/></svg>Kampagne</button>
+      <button class="big purp" id="bDaily"></button>
+      <button class="big kw-first hide" id="bEdition">Vollversion freischalten</button>
+    </div>
+    <div class="home-grid">
+      <button class="big sec" id="bShop">Werkstatt</button>
+      <button class="big sec" id="bAch">Erfolge</button>
+      <button class="big sec" id="bLaden">Booster</button>
+      <button class="big sec" id="bAlbum">Album</button>
+    </div>
+    <div class="tipwrap"><img class="tipEmmi" id="menuTipEmmi" alt=""><div class="tipline" id="menuTip"></div></div>
+    <div class="home-tools"></div>
+  </div>
+</div>
+<div class="overlay hide" id="ovEdition">
+  <div class="card">
+    <h2>Kristallwacht – Vollversion</h2>
+    <p>30 Kampagnenlevel, Endlosmodus und täglich wechselnde Aufgaben. Einmal kaufen und dauerhaft freischalten.</p>
+    <p id="editionStatus" role="status" aria-live="polite"></p>
+    <button class="big" id="bBuyEdition" disabled>Kaufen</button>
+    <button class="big sec" id="bRestoreEdition">Käufe wiederherstellen</button>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovMaps">
+  <div class="card">
+    <h2>Kampagne</h2>
+    <p>Gewinne Karten für Sterne – 3 Sterne ohne Lebensverlust.</p>
+    <div class="list" id="mapList"></div>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovDiff">
+  <div class="card">
+    <h2>Schwierigkeit</h2>
+    <p id="diffMap"></p>
+    <div class="mutbox"><b>Mutatoren</b> <small>freiwillig · mehr Splitter</small><div id="mutList"></div></div>
+    <div class="list" id="diffList"></div>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovShop">
+  <div class="card">
+    <h2>Werkstatt</h2>
+    <p>Dauerhafte Verbesserungen für alle Runden.</p>
+    <div class="pills"><div class="gems"><svg class="ic"><use href="#sGem"/></svg><span class="gemCount">0</span></div></div>
+    <div class="tabs"><button data-tab="0" class="on">Allgemein</button><button data-tab="1">Turm-Forschung</button></div>
+    <div class="list" id="shopList"></div>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovLaden">
+  <div class="card">
+    <img class="emmi mini emmiArtS" alt="" src="assets/emmi.webp">
+    <h2>Booster</h2>
+    <p>Booster verdienst du durchs Spielen. Nie Pflicht, nie nur gegen Geld.</p>
+    <div class="list" id="ladenList"></div>
+    <button class="big sec" id="bStat">Spielstatistik kopieren</button>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovAlbum">
+  <div class="card">
+    <h2>Sammelalbum</h2>
+    <p id="albSum"></p>
+    <h3 class="albh">Gegner</h3><div class="albgrid" id="albE"></div>
+    <h3 class="albh">Relikte</h3><div class="alblist" id="albR"></div>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovAch">
+  <div class="card">
+    <h2>Erfolge</h2>
+    <p id="achCount"></p>
+    <div class="list" id="achList"></div>
+    <button class="big sec" data-back>Zurück</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovRelic">
+  <div class="card">
+    <h2>Relikt wählen</h2>
+    <p id="relicSub"></p>
+    <div class="list" id="relicList"></div>
+    <button class="big sec" id="bReroll"></button>
+  </div>
+</div>
+<div class="overlay hide" id="ovRelics">
+  <div class="card">
+    <h2>Deine Relikte</h2>
+    <p>Alle 5 Wellen darfst du ein neues wählen.</p>
+    <div class="list" id="ownList"></div>
+    <button class="big sec" data-back>Weiter</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovPause">
+  <div class="card">
+    <h2>Pausiert</h2>
+    <button class="big" id="bResume"><svg class="ic"><use href="#sPlay"/></svg>Weiter</button>
+    <div class="row2">
+      <button class="big sec" id="bSound">Effekte: an</button>
+      <button class="big sec" id="bMusic">Musik: an</button>
+    </div>
+    <div class="row2">
+      <button class="big sec" id="bAuto">Auto-Wellen: aus</button>
+      <button class="big sec" id="bOne">Einhand-Modus: aus</button>
+      <button class="big sec" id="bShare">Labyrinth teilen</button>
+      <button class="big sec" id="bMenu">Hauptmenü</button>
+    </div>
+    <p style="margin-top:12px;font-size:12px">Gespeichert wird automatisch nach jeder geschafften Welle.</p>
+  </div>
+</div>
+<div class="overlay hide" id="ovWin">
+  <div class="card">
+    <img class="emmi mini emmiArtS" alt="" src="assets/emmi-2.webp"><h2>Sieg!</h2>
+    <div class="bigstars" id="winStars"></div>
+    <p id="winTxt"></p>
+    <div class="res" id="winRes"></div>
+    <button class="big" id="bWinNext"><svg class="ic"><use href="#sPlay"/></svg>Weiter</button>
+    <button class="big sec" id="bEndless">Endlos weiterspielen</button>
+    <button class="big sec" id="bShare2">Labyrinth teilen</button>
+  </div>
+</div>
+<div class="overlay hide" id="ovOver">
+  <div class="card">
+    <img class="emmi mini emmiArtS" alt="" src="assets/emmi-3.webp"><h2>Der Kristall ist gefallen</h2>
+    <p id="overTxt"></p>
+    <div class="res" id="overRes"></div>
+    <p class="best" id="overBest"></p>
+    <button class="big" id="bAgain"><svg class="ic"><use href="#sPlay"/></svg>Nochmal</button>
+    <div class="row2">
+      <button class="big sec" id="bOverShop">Werkstatt</button>
+      <button class="big sec" id="bOverMenu">Menü</button>
+    </div>
+  </div>
+</div>
+
+<script src="spiel.js"></script>
+<script src="ios-bedienung.js"></script>
+</body>
+</html>

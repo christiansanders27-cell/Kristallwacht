@@ -38,6 +38,12 @@ Ergebnis: `dist/Kristallwacht.html`. Diese Datei auf Netlify hochladen oder dire
 - **Fallen** (`TRAPS`): Stachel, Teer, Glut – liegen auf dem Weg, blockieren nicht, max. 8 pro Runde.
 - **Baupläne** im Pausemenü: Mauern je Karte speichern und wieder aufbauen (`meta.bp`).
 
+## Grafiken und Designvorlage
+
+`grafiken/` enthält das Grafikpaket: Stilvorgabe (`CANVA_STILVORGABE.md`), Designvorlage „Drei Welten“
+(Gezeitenhafen, Uhrwerkgarten, Pilzkathedrale), Bildtafeln, alle Spielgrafiken und Galerie (`Galerie.html`).
+Die Karte **Uhrwerkgarten** (Draufsicht, Hecken) ist der erste Schritt in Richtung dieser Vorlage.
+
 ## Wichtige Spielregeln für Änderungen
 
 - Komplett offline spielbar – keine Dateien aus dem Internet nachladen.

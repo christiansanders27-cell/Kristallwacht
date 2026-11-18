@@ -30,6 +30,14 @@ python3 build.py
 Ergebnis: `dist/Kristallwacht.html`. Diese Datei auf Netlify hochladen oder direkt öffnen.
 `src/` ist nicht direkt spielbar, weil die Sounds erst beim Bauen eingesetzt werden.
 
+## Labyrinth-Bau (ab V26)
+
+- Erste Karte (Grüne Lichtung) 11 × 17 Felder, alle anderen 15 × 23 (`scaleMaps` überträgt die Karten).
+- Gegner laufen nur gerade (keine Diagonalen) – siehe `NBM`.
+- Mauer antippen → umbauen zu **Tor** (im Kampf auf/zu), **Dornmauer** oder **Kristallmauer** (`WK`).
+- **Fallen** (`TRAPS`): Stachel, Teer, Glut – liegen auf dem Weg, blockieren nicht, max. 8 pro Runde.
+- **Baupläne** im Pausemenü: Mauern je Karte speichern und wieder aufbauen (`meta.bp`).
+
 ## Wichtige Spielregeln für Änderungen
 
 - Komplett offline spielbar – keine Dateien aus dem Internet nachladen.

@@ -113,8 +113,6 @@ const ZR=2.3,ANL=7;let showPath=false;
     if(m.tiles){const t={};for(const k in m.tiles)t[k]=(k==="hi"||k==="ad")?m.tiles[k].map(pt):blk(m.tiles[k]);m.tiles=t;}});
 })();
 function pathSec(L){return Math.round(L/(ED.normal.spd*DF().spd));}
-const gardenIndex=MAPS.length;
-MAPS.push({name:"Uhrwerkgarten",desc:"Zwei Portale im Heckengarten",theme:"grass",waves:20,spawns:[[1,0],[9,0]],goal:[5,16],decor:[],garden:true});
 const MORDER=[0,1,2,3,4,16,17,18,19,20,6,7,8,9,21,22,23,24,25,26,10,11,12,13,14,15,27,28,29,30,5]; // Reihenfolge in der Kampagne (Endlos bleibt Nr. 5, damit alte Spielstände passen)
 function tileSpd(e){
   const c=Math.floor(e.x/T),r=Math.floor(e.y/T);if(c<0||c>=COLS||r<0||r>=ROWS)return 1;const k=tile[idx(c,r)];
@@ -709,12 +707,10 @@ const PB=80;let PV=56,tiltT=1,tiltTarget=1,tiltAuto=true,tiltMoving=false;
 // Welt (x,y am Boden, z nach oben) -> Bildpunkt (ohne Zoom); s = Maßstab an dieser Stelle
 let forestWide=false;
 function P(x,y,z){
-  if(MAP.garden){const s=FOC/CDIST;return{x:VCX+(x-W/2)*s,y:VCY+(y-H/2)*s,s};}
   if(forestWide){const s=FOC/CDIST;return{x:VCX+(y-H/2)*s,y:VCY+((W/2-x)*.83-(z||0)*.52)*s,s};}
 const dy=y-CAMY,dz=(z||0)-CAMZ,depth=-dy*cP-dz*sP,up=-dy*sP+dz*cP,k=FOC/depth;return{x:VCX+(x-CAMX)*k,y:VCY-up*k,s:k};}
 // Bildpunkt -> Weltpunkt auf der Höhe z
 function unproject(vx,vy,z){
-  if(MAP.garden){const s=FOC/CDIST;return{x:(vx-VCX)/s+W/2,y:(vy-VCY)/s+H/2};}
   if(forestWide){const s=FOC/CDIST;return{x:W/2-((vy-VCY)/s+(z||0)*.52)/.83,y:H/2+(vx-VCX)/s};}
 const a=(vx-VCX)/FOC,b=-(vy-VCY)/FOC,dy=-cP-b*sP,dz=-sP+b*cP,t=((z||0)-CAMZ)/dz;return{x:CAMX+a*t,y:CAMY+dy*t};}
 // Höhe eines Punkts in der Turm-Grafik (48er-Einheiten, Fuß bei +13) als Welthöhe
@@ -740,9 +736,8 @@ function box(){FOC=CDIST;VCX=0;VCY=0;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
   return{x0,x1,y0,y1,vs:Math.min((CW-pad*2)/(x1-x0),(CH-pad*2)/(y1-y0))};}
 // Blickwinkel aus tiltT (0 = Bau-Ansicht, 1 = Schau-Ansicht) anwenden
 function applyView(){
-  setPitch(MAP.garden?90:PV+(PB-PV)*(1-tiltT));
+  setPitch(PV+(PB-PV)*(1-tiltT));
   const b=box();VS=b.vs;FOC=CDIST*VS;
-  if(MAP.garden){VS*=.89;FOC=CDIST*VS;}
   if(forestWide){VS*=.88;FOC=CDIST*VS;}
   VCX=CW/2-(b.x0+b.x1)/2*VS;VCY=CH/2-(b.y0+b.y1)/2*VS;
   BB={x0:VCX+b.x0*VS,x1:VCX+b.x1*VS,y0:VCY+b.y0*VS,y1:VCY+b.y1*VS};
@@ -2129,13 +2124,6 @@ function startRun(cfg){
     applyMaze(bfs(-1));
     S.undo=[];
   }
-  if(MAP.garden){
-    const rows=[[3,3],[4,3],[5,3],[6,3],[3,4],[3,5],[2,5],[6,9],[7,9],[8,9],[6,10],[6,11],[5,11],[2,11],[2,12],[2,13],[0,13],[1,13],[3,13],[7,13],[8,13],[9,13],[10,13]];
-    for(const [c,r,type="wall"] of [...rows,[0,5,"arrow"],[10,5,"cannon"]]){
-      const t=newTower(type,c,r);t.fresh=false;occ[t.i]=t;S.towers.push(t);
-    }
-    applyMaze(bfs(-1));
-  }
   if(S.muts.includes("poor"))S.gold=Math.round(S.gold*.7);
   if(S.muts.includes("glass")){S.lives=Math.ceil(S.lives/2);S.maxLives=S.lives;}openOv(null);buildShop();uiDirty=true;resetView();fit();
   S.banner={t:0,txt:cfg.daily?"Tagesaufgabe":MAP.name,sub:cfg.daily?MODS.find(m=>m.id===cfg.mod).name+": "+MODS.find(m=>m.id===cfg.mod).desc:tacticalHint(),col:"#ffd25e"};
@@ -2155,7 +2143,6 @@ function continueRun(){
   S.started=true;openOv(S.offer?"ovRelic":null);buildShop();uiDirty=true;resetView();fit();
   lastCfg={map:S.map,diff:S.diff,daily:S.daily,mod:S.mod,muts:S.muts,intro:S.intro,referenceLayout};
 }
-$("bGarden").addEventListener("click",()=>{selMap=gardenIndex;backTo="ovMenu";openOv("ovDiff");});
 $("bPrologue").addEventListener("click",()=>startRun({map:0,diff:0,intro:true}));
 $("bCampaign").addEventListener("click",()=>{backTo="ovMenu";openOv("ovMaps");});
 $("bDaily").addEventListener("click",()=>{const dc=dailyCfg();startRun({map:dc.map,diff:1,daily:true,mod:dc.mod.id});});
@@ -2808,44 +2795,7 @@ function drawEnemy(e,now){
   g.restore();
 }
 const ROT=t=>t.type==="arrow"||t.type==="cannon"||t.type==="sniper";
-const gardenArt={};
-for(const [key,url] of Object.entries({"arrow": "assets/garden-arrow.webp", "cannon": "assets/garden-cannon.webp", "frost": "assets/garden-frost.webp", "tesla": "assets/garden-tesla.webp", "poison": "assets/garden-poison.webp", "portal": "assets/garden-portal.webp", "crystal": "assets/garden-crystal.webp", "board": "assets/garden-board.webp", "hedge": "assets/garden-hedge.webp"})){
-  const img=new Image();img.src=url;gardenArt[key]=img;
-}
-function gardenStamp(img,x,y,width,height){
-  if(!img?.naturalWidth)return false;
-  const p=P(x,y,0);
-  g.drawImage(img,p.x-width*p.s/2,p.y-height*p.s/2,width*p.s,height*p.s);return true;
-}
-function gardenTower(t){
-  if(t.type!=="wall"){
-    const key=t.type==="sniper"?ARTI[TWI.sniper]:gardenArt[t.type];
-    if(!gardenStamp(key,t.x,t.y,T*.93,T*.93))return false;
-    if(t.level>1){const p=P(t.x,t.y+T*.35,0);g.fillStyle="#433827";g.fillRect(p.x-9*p.s,p.y,18*p.s,4*p.s);g.fillStyle=t.branch===1?"#a8eaff":"#ffd675";g.fillRect(p.x-9*p.s,p.y,18*p.s*t.level/MAXL,4*p.s);}
-    return true;
-  }
-  const p=P(t.x,t.y,0),u=T*p.s;
-  g.save();g.translate(p.x,p.y);g.scale(u,u);
-  const hedge=(x,y,w,h)=>{
-    g.fillStyle="#34431b";g.fillRect(x,y+.04,w,h);
-    if(gardenArt.hedge.naturalWidth)g.drawImage(gardenArt.hedge,x,y,w,h);
-    else{g.fillStyle="#829039";g.fillRect(x,y,w,h);}
-  };
-  if(t.wk==="gate"){
-    g.fillStyle="#99723a";g.fillRect(-.44,-.29,.14,.58);g.fillRect(.3,-.29,.14,.58);
-    if(!t.open){g.fillStyle="#c39a4c";g.fillRect(-.32,-.22,.64,.44);}
-  }else{
-    for(const [dc,dr] of [[1,0],[-1,0],[0,1],[0,-1]]){
-      const c=t.c+dc,r=t.r+dr;if(c<0||c>=COLS||r<0||r>=ROWS||occ[idx(c,r)]?.type!=="wall")continue;
-      hedge(dc>0?0:dc<0?-.51:-.35,dr>0?0:dr<0?-.51:-.35,dc?.52:.7,dr?.52:.7);
-    }
-    hedge(-.36,-.36,.72,.72);
-    if(t.wk){g.fillStyle=t.wk==="crystal"?"#88f2ff":"#f4d497";g.beginPath();g.moveTo(0,-.23);g.lineTo(.16,.06);g.lineTo(0,.2);g.lineTo(-.16,.06);g.closePath();g.fill();}
-  }
-  g.restore();return true;
-}
 function drawTower(t,now){
-  if(MAP.garden&&gardenTower(t))return;
   const ref=forestSprite(t.type);
   if(t.type==="wall"&&ref){
     const p=P(t.x,t.y,0),vertical=forestWide
@@ -2942,7 +2892,6 @@ function equippedCosmetic(kind){
   return id?KW5.cosmetics.find(item=>item.id===id):null;
 }
 function drawCrystal(now){
-  if(MAP.garden&&!equippedCosmetic("crystal")&&gardenStamp(gardenArt.crystal,CRY.x,CRY.y,T,T))return;
   const ref=forestSprite("crystal");
   if(ref||artOk("kristall")){const p=P(CRY.x,CRY.y,0),f=S.lives/Math.max(1,S.maxLives),pulse=.38+Math.sin(now*3)*.12+S.cryHit,im=ref||ARTI.kristall;
     g.save();g.translate(p.x,p.y);g.scale(p.s,p.s);g.globalCompositeOperation="lighter";
@@ -2972,8 +2921,7 @@ function drawCrystal(now){
   for(let i=0;i<3;i++){const a=now*1.4+i*TAU/3;g.save();g.translate(Math.cos(a)*19,Math.sin(a)*7-2);g.beginPath();g.moveTo(0,-4);g.lineTo(2.5,0);g.lineTo(0,4);g.lineTo(-2.5,0);g.closePath();g.fillStyle=col(80);g.fill();g.restore();}
   g.restore();g.restore();
 }
-function drawPortal(Pt,now){
-  if(MAP.garden&&gardenStamp(gardenArt.portal,Pt.x,Pt.y,T,T))return; // aufrecht stehendes Tor
+function drawPortal(Pt,now){ // aufrecht stehendes Tor
   const ref=forestSprite("portal");
   if(ref||artOk("portal")){const p=P(Pt.x,Pt.y,0),im=ref||ARTI.portal;g.save();g.translate(p.x,p.y);g.scale(p.s,p.s);
     g.globalCompositeOperation="lighter";g.fillStyle=radial(g,0,-22,0,40,[[0,"rgba(190,90,255,"+(.45+.12*Math.sin(now*3))+")"],[1,"rgba(120,40,200,0)"]]);g.fillRect(-40,-62,80,80);g.globalCompositeOperation="source-over";
@@ -2995,7 +2943,6 @@ function drawPortal(Pt,now){
 }
 // ---------- Hilfen für Flächen auf dem Boden ----------
 function drawWorldLayer(img,alpha){
-  if(MAP.garden){const a=P(0,0,0);g.save();g.globalAlpha=alpha??1;g.drawImage(img,a.x,a.y,W*a.s,H*a.s);g.restore();return;}
   if(forestWide){
     const a=P(0,0,0),k=a.s;
     g.save();g.globalAlpha=alpha??1;g.translate(a.x,a.y);
@@ -3049,11 +2996,7 @@ function draw(now){
   const Z=dpr*VZ;g.setTransform(Z,0,0,Z,dpr*(VX+shX*VZ),dpr*(VY+shY*VZ));
   // Schatten unter der schwebenden Insel
   {const p=P(W/2,H,-CLIFF);g.fillStyle=radial(g,p.x,p.y+8,4,W*p.s*.62,[[0,"rgba(5,20,60,.35)"],[1,"rgba(5,20,60,0)"]]);g.save();g.translate(p.x,p.y+8);g.scale(1,.22);g.beginPath();g.arc(0,0,W*p.s*.62,0,TAU);g.restore();g.fill();}
-  if(MAP.garden){
-    const a=P(0,0),scale=T*a.s/42;
-    if(gardenArt.board.naturalWidth)g.drawImage(gardenArt.board,a.x-27*scale,a.y-36*scale,516*scale,786*scale);
-    else drawWorldLayer(bg);
-  }else if(forestWide&&forestPlate.complete&&forestPlate.naturalWidth){
+  if(forestWide&&forestPlate.complete&&forestPlate.naturalWidth){
     g.save();g.setTransform(dpr,0,0,dpr,0,0);g.drawImage(forestPlate,0,0,CW,CH);g.restore();
     drawWorldLayer(bg);
   }else{
@@ -3068,15 +3011,11 @@ function draw(now){
   g.lineCap="round";g.lineJoin="round";
   const building=S.build&&S.started&&!S.over;
   if(building){const act=touch||S.pending||S.plan.length||S.hover>=0;gridA+=((act?.85:.12)-gridA)*.15;drawWorldLayer(gridCv,gridA);}
-  if(!forestWide&&!MAP.garden)drawShadows();
+  if(!forestWide)drawShadows();
   if(MAP!==MAPS[0]||showPath||S.plan.length)for(const si of SPAWNS){const zx=cx(si),zy=cy(si),zk=P(zx,zy,0).s;groundCircle(zx,zy,(ZR+.2)*T,.6);g.fillStyle="rgba(170,110,255,.10)";g.fill();
     g.setLineDash([6*zk,8*zk]);g.lineDashOffset=-now*16*zk;g.strokeStyle="rgba(215,185,255,.7)";g.lineWidth=2*zk;g.stroke();g.setLineDash([]);}
   const routes=S.planRoutes||S.routes;
   for(const rt of routes){if(rt.length<2)continue;const k=P(W/2,H/2,0).s;
-    if(MAP.garden){
-      g.setLineDash([.4*k,8*k]);g.lineDashOffset=-now*12*k;routePath(rt,0);
-      g.strokeStyle="#426157";g.lineWidth=5*k;g.stroke();g.strokeStyle="#b4ffdf";g.lineWidth=3*k;g.stroke();g.setLineDash([]);continue;
-    }
     if(MAP===MAPS[0]){
       routePath(rt,.5);g.strokeStyle="#534427b5";g.lineWidth=T*.79*k;g.stroke();
       routePath(rt,.6);g.strokeStyle="#b69a71";g.lineWidth=T*.72*k;g.stroke();
